@@ -13,5 +13,11 @@ namespace EventRegistrationSystem.Controllers
         {
             return View();
         }
+
+        // GET: About
+        public ActionResult About()
+        {
+            return View();
+        }
     }
 }
