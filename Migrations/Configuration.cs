@@ -21,6 +21,7 @@
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
 
+            // Check if Clients and Events tables have 'Any' data.
             if (context.Clients.Any() && context.Events.Any())
             {
                 return;
