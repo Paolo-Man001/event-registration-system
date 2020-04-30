@@ -9,7 +9,7 @@ namespace EventRegistrationSystem.Models
     public class Event
     {
         public int ID { get; set; }
-        public int ClientID { get; set; }
+        public int ClientID { get; set; }           // Foreign Key
 
         [Required]
         public string EventName { get; set; }
@@ -26,6 +26,6 @@ namespace EventRegistrationSystem.Models
         public decimal TicketPrize { get; set; }
 
 
-        public virtual Client Client { get; set; }
+        public virtual Client Client { get; set; }  // Foreign Key Reference Model
     }
 }
