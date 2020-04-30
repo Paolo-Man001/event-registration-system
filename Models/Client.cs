@@ -10,13 +10,13 @@ namespace EventRegistrationSystem.Models
     {
         public int ID { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Name is required.")]
         public string FullName { get; set; }
         
-        [Required]
+        [Required(ErrorMessage = "Address is required.")]
         public string Address { get; set; }
         
-        [Required]
+        [Required(ErrorMessage = "Phone Number is required.")]
         public string Phone { get; set; }
 
 
