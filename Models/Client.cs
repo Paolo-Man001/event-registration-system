@@ -12,10 +12,13 @@ namespace EventRegistrationSystem.Models
 
         [Required(ErrorMessage = "Name is required.")]
         public string FullName { get; set; }
-        
+
+        [Required(ErrorMessage = "Email is required.")]
+        public string Email { get; set; }
+
         [Required(ErrorMessage = "Address is required.")]
         public string Address { get; set; }
-        
+
         [Required(ErrorMessage = "Phone Number is required.")]
         public string Phone { get; set; }
 

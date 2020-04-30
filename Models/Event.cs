@@ -11,7 +11,7 @@ namespace EventRegistrationSystem.Models
         public int ID { get; set; }
         public int ClientID { get; set; }           // Foreign Key
 
-        [Required(ErrorMessage = "Evnt Name is required.")]
+        [Required(ErrorMessage = "Event Name is required.")]
         public string EventName { get; set; }
 
         public string Description { get; set; }
