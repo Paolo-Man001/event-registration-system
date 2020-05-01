@@ -14,20 +14,20 @@ namespace EventRegistrationSystem.Models
 
         [Required(ErrorMessage = "Name is required.")]
         [Display(Name = "Client Name")]
-        [Column(TypeName = "varchar(100)")]
+        [StringLength(100), MinLength(3)]
         public string FullName { get; set; }
 
         [Required(ErrorMessage = "Email is required.")]
         [EmailAddress]
-        [Column(TypeName = "varchar(100)")]
+        [StringLength(100)]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Address is required.")]
-        [Column(TypeName = "varchar(100)")]
+        [StringLength(100)]
         public string Address { get; set; }
 
         [Required(ErrorMessage = "Phone Number is required.")]
-        [Column(TypeName = "varchar(50)")]
+        [StringLength(50), MinLength(6)]
         public string Phone { get; set; }
 
 

@@ -14,22 +14,23 @@ namespace EventRegistrationSystem.Models
 
 
         [Required(ErrorMessage = "Event Name is required.")]
-        [Column(TypeName = "varchar(100)")]
+        [StringLength(100), MinLength(3)]
         public string EventName { get; set; }
 
-        [Column(TypeName = "varchar(100)")]
+        [StringLength(100)]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Event Location is required.")]
-        [Column(TypeName = "varchar(100)")]
+        [StringLength(100)]
         public string Location { get; set; }
 
         [Required(ErrorMessage = "Event Date is required.")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString ="{0:dd-MM-yyy}",ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
 
         [Required(ErrorMessage = "Ticket Price is required.")]
-        [Display(Name = "Ticket Price")]
+        [Display(Name = "Ticket Price"),Range(0, 100),DataType(DataType.Currency)]
         public decimal TicketPrice { get; set; }
 
 
