@@ -1,11 +1,8 @@
 ﻿using EventRegistrationSystem.DAL;
-using EventRegistrationSystem.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using EventRegistrationSystem.ViewModels;
 
 namespace EventRegistrationSystem.Controllers
 {
@@ -21,18 +18,20 @@ namespace EventRegistrationSystem.Controllers
 
         public ActionResult Details(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Client client = db.Clients.Find(id);
-            if (client == null)
-            {
-                return HttpNotFound();
-            }
+            var viewModel = new ClientDetailsViewModel();   // Create instance of ViewModel  of Client-Detail
+            viewModel.Client = db.Clients.Find(id);         // Assign db.Client matching the 'id'
+            viewModel.Events = db.Events                    // Assign db.Client's Event/s (if any)
+                .Where(e => e.ClientID == id)
+                .OrderBy(e => e.EventName)
+                .ToList();
 
-            return View(client);
+            return View(viewModel);
 
         }
     }

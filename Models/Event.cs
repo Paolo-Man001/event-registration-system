@@ -14,7 +14,7 @@ namespace EventRegistrationSystem.Models
 
 
         [Required(ErrorMessage = "Event Name is required.")]
-        [StringLength(100), MinLength(3)]
+        [StringLength(100), MinLength(3), Display(Name = "Events"),]
         public string EventName { get; set; }
 
         [StringLength(100)]

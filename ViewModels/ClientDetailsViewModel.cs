@@ -8,7 +8,7 @@ namespace EventRegistrationSystem.ViewModels
 {
     public class ClientDetailsViewModel
     {
-        public IEnumerable<Client> Clients { get; set; }
+        public Client Client { get; set; }
         public IEnumerable<Event> Events { get; set; }
     }
 }
