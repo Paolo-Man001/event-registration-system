@@ -5,11 +5,11 @@
 
 <h2>Client Details</h2>
 <div>
-    @*<p>@Html.ActionLink("Back to List", "Index")</p>*@
-    <h5>
+
+    <div>
         <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
         @Html.ActionLink("Back to Client List", "Index")
-    </h5>
+    </div>
     <hr />
 
     <dl class="dl-horizontal">
@@ -47,37 +47,51 @@
         </dd>
 
     </dl>
+    <hr />
+    @if (Model.Events.Count() <= 0)
+    {
+        <div class="well well-lg">
+            <p class="text-center text-warning">You haven't registered any Events.</p>
+        </div>
+    }
+    else
+    {
+        <div>
+            <div class="">
+                <h4 class="text-primary">Your Events</h4>
+            </div>
+            <table class="table">
+                <tr class="info">
+                    <th>Events</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Location</th>
+                    <th>Ticket Price</th>
+                </tr>
+                @foreach (var item in Model.Events)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => item.EventName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Description)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => item.Location)
+                        </td>
 
-    <table class="table">
-        <tr class="info">
-            <th>Events</th>
-            <th>Description</th>
-            <th>Date</th>
-            <th>Location</th>
-            <th>Ticket Price</th>
-        </tr>
-        @foreach (var item in Model.Events)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(model => item.EventName)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Date)
-                </td>
-                <td>
-                    @Html.DisplayFor(model => item.Location)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(model => item.TicketPrice)
-                </td>
-            </tr>
-        }
-    </table>
+                        <td>
+                            @Html.DisplayFor(model => item.TicketPrice)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
 
 </div>
 
