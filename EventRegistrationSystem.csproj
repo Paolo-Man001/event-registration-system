@@ -142,6 +142,10 @@
     <Compile Include="Migrations\202005010029237_AddModelPropAnnotations.designer.cs">
       <DependentUpon>202005010029237_AddModelPropAnnotations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202005021001120_UpdateModelAnnotation-StringLength.cs" />
+    <Compile Include="Migrations\202005021001120_UpdateModelAnnotation-StringLength.designer.cs">
+      <DependentUpon>202005021001120_UpdateModelAnnotation-StringLength.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Event.cs" />
@@ -186,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202005010029237_AddModelPropAnnotations.resx">
       <DependentUpon>202005010029237_AddModelPropAnnotations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202005021001120_UpdateModelAnnotation-StringLength.resx">
+      <DependentUpon>202005021001120_UpdateModelAnnotation-StringLength.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

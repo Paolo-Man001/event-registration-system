@@ -14,23 +14,24 @@ namespace EventRegistrationSystem.Models
 
 
         [Required(ErrorMessage = "Event Name is required.")]
-        [StringLength(100), MinLength(3), Display(Name = "Events"),]
+        [Display(Name = "Events")]
+        [StringLength(100, MinimumLength = 2, ErrorMessage = "Event Name must be 2 to 100 characters.")]
         public string EventName { get; set; }
 
-        [StringLength(100)]
+        [StringLength(100, MinimumLength = 2, ErrorMessage = "Event Description must be 2 to 100 characters.")]
         public string Description { get; set; }
 
         [Required(ErrorMessage = "Event Location is required.")]
-        [StringLength(100)]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "Location must be 2 to 50 characters.")]
         public string Location { get; set; }
 
         [Required(ErrorMessage = "Event Date is required.")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString ="{0:dd-MM-yyy}",ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyy}", ApplyFormatInEditMode = true)]
         public DateTime Date { get; set; }
 
         [Required(ErrorMessage = "Ticket Price is required.")]
-        [Display(Name = "Ticket Price"),Range(0, 100),DataType(DataType.Currency)]
+        [Display(Name = "Ticket Price"), Range(0, 100), DataType(DataType.Currency)]
         public decimal TicketPrice { get; set; }
 
 
