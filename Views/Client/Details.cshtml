@@ -51,14 +51,18 @@
     @if (Model.Events.Count() <= 0)
     {
         <div class="well well-lg">
-            <p class="text-center text-warning">You haven't registered any Events.</p>
+            <p class="text-center text-warning">
+                @Model.Client.FullName has No Registered Events.
+            </p>
         </div>
     }
     else
     {
         <div>
             <div class="">
-                <h4 class="text-primary">Your Events</h4>
+                <h4 class="text-primary">
+                    @Model.Client.FullName - Registered Events
+                </h4>
             </div>
             <table class="table">
                 <tr class="info">
