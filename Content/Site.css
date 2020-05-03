@@ -16,7 +16,7 @@ textarea {
     max-width: 280px;
 }
 
-#client-edit-alert {
-    padding: 30px 60px;
+.client-alert-box {
+    padding: 20px 60px;
 }
 

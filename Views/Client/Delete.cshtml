@@ -1,0 +1,61 @@
+﻿@model EventRegistrationSystem.Models.Client
+
+@{
+    ViewBag.Title = "Delete Client";
+}
+
+<h2>Delete Client</h2>
+<div class="alert alert-warning client-alert-box">
+    Are you sure you want to <strong>DELETE @Model.FullName?</strong>
+</div>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <button class="btn btn-primary">
+                <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                @Html.ActionLink("Client List", "Index",null, new { @style = "text-transform:capitalize; color:white;" })
+            </button>
+            <button type="submit" class="btn btn-danger" style="width:100px;">Delete</button>
+        </div>
+    }
+</div>
