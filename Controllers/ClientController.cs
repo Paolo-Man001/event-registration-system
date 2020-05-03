@@ -27,12 +27,14 @@ namespace EventRegistrationSystem.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var viewModel = new ClientDetailsViewModel();   // Create instance of ViewModel of Client-Detail
-            viewModel.Client = db.Clients.Find(id);         // Assign db.Client matching the 'id'
-            viewModel.Events = db.Events                    // Assign db.Client's Event/s (if any)
+            var viewModel = new ClientDetailsViewModel  // Create instance of ViewModel of Client-Detail
+            {
+                Client = db.Clients.Find(id),           // Assign db.Client matching the 'id'
+                Events = db.Events                      // Assign db.Client's Event/s (if any)
                 .Where(e => e.ClientID == id)
                 .OrderBy(e => e.EventName)
-                .ToList();
+                .ToList()
+            };
 
             return View(viewModel);
         }
@@ -77,13 +79,15 @@ namespace EventRegistrationSystem.Controllers
         // POST: Client/Edit/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Address, Phone")] Client client)
+        public ActionResult Edit([Bind(Include = "ID,FullName,Email,Address, Phone")] Client client)
         {
             if (ModelState.IsValid)
             {
+                ViewBag.isSubmitted = true;
+
                 db.Entry(client).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
             }
             return View(client);
         }
