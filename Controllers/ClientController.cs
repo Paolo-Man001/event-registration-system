@@ -107,7 +107,7 @@ namespace EventRegistrationSystem.Controllers
             }
             return View(client);
         }
-        // POST: Movies/Delete/5
+        // POST: Client/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
