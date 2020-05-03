@@ -4,6 +4,7 @@ using System.Net;
 using System.Web.Mvc;
 using EventRegistrationSystem.ViewModels;
 using EventRegistrationSystem.Models;
+using System.Data.Entity;
 
 namespace EventRegistrationSystem.Controllers
 {
@@ -57,5 +58,34 @@ namespace EventRegistrationSystem.Controllers
             return View(client);
         }
 
+
+        // GET: Client/Edit
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Client client = db.Clients.Find(id);
+            if (client == null)
+            {
+                return HttpNotFound();
+            }
+            return View(client);
+        }
+
+        // POST: Client/Edit/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Address, Phone")] Client client)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(client).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(client);
+        }
     }
 }
