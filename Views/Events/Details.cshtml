@@ -1,17 +1,26 @@
 ﻿@model EventRegistrationSystem.Models.Event
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Event Details";
 }
 
-<h2>Details</h2>
+<h2>Event Details</h2>
 
 <div>
-    <h4>Event</h4>
+    <div class="btn-group" role="group" aria-label="...">
+        <a type="button" class="btn btn-primary btn-sm" href="/Events/Index">
+            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+            Events List
+        </a>
+        <a type="button" class="btn btn-success btn-sm" href="/Events/Edit/@Model.ID">
+            Edit Event
+            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+        </a>
+    </div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Client.FullName)
+            Event Owner
         </dt>
 
         <dd>
@@ -23,7 +32,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.EventName)
+            Event Name
         </dd>
 
         <dt>
@@ -60,7 +69,4 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

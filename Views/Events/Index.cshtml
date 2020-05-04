@@ -1,18 +1,20 @@
 ﻿@model IEnumerable<EventRegistrationSystem.Models.Event>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Events Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
+<div class="events-header-div" style="margin-top:20px; padding:4px 10px;">
+    <h2 class="pull-left">Events List</h2>
+    <a class="pull-right btn btn-success btn-sm" href="/Events/Create" style="margin-top:20px; margin-bottom:20px;" >
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        New Event
+    </a>
+</div>
+<table class="table table-hover">
+    <tr class="info">
         <th>
-            @Html.DisplayNameFor(model => model.Client.FullName)
+            Event Owner
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EventName)
@@ -32,32 +34,35 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Client.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EventName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TicketPrice)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="bg-warning">
+                @Html.DisplayFor(modelItem => item.Client.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketPrice)
+            </td>
+            <td>
+                <div class="btn-group" role="group" aria-label="...">
+                    <a type="button" class="btn btn-warning btn-xs" href="/Events/Edit/@item.ID" style="width:56.69px">Edit</a>
+                    <a type="button" class="btn btn-primary btn-xs" href="/Events/Details/@item.ID">Details</a>
+                    <a type="button" class="btn btn-danger btn-xs" href="/Events/Delete/@item.ID">Delete</a>
+                </div>
+            </td>
+        </tr>
+    }
 
 </table>

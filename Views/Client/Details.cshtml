@@ -5,10 +5,15 @@
 
 <h2>Client Details</h2>
 <div>
-
-    <div>
-        <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
-        @Html.ActionLink("Back to Client List", "Index")
+    <div class="btn-group" role="group" aria-label="...">
+        <a type="button" class="btn btn-primary btn-sm" href="/Client/Index">
+            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+            Client List
+        </a>
+        <a type="button" class="btn btn-success btn-sm" href="/Client/Edit/@Model.Client.ID">
+            Edit Client
+            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+        </a>
     </div>
     <hr />
 

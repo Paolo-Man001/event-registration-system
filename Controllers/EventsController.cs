@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using EventRegistrationSystem.DAL;
 using EventRegistrationSystem.Models;
@@ -18,7 +14,7 @@ namespace EventRegistrationSystem.Controllers
         // GET: Events
         public ActionResult Index()
         {
-            var events = db.Events.Include(e => e.Client);
+            var events = db.Events.Include(e => e.Client).OrderBy(e => e.EventName);
             return View(events.ToList());
         }
 
@@ -87,9 +83,11 @@ namespace EventRegistrationSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                ViewBag.isSubmitted = true;
+
                 db.Entry(@event).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
             }
             ViewBag.ClientID = new SelectList(db.Clients, "ID", "FullName", @event.ClientID);
             return View(@event);

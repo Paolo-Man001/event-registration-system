@@ -15,7 +15,7 @@ namespace EventRegistrationSystem.Controllers
         // GET: Client List
         public ActionResult Index()
         {
-            return View(db.Clients.ToList());
+            return View(db.Clients.OrderBy(c => c.FullName).ToList());
         }
 
 

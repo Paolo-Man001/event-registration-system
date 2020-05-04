@@ -51,11 +51,11 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <button class="btn btn-primary">
+            <a type="button" href="/Client/Index" class="btn btn-primary btn-sm">
                 <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
-                @Html.ActionLink("Client List", "Index",null, new { @style = "text-transform:capitalize; color:white;" })
-            </button>
-            <button type="submit" class="btn btn-danger" style="width:100px;">Delete</button>
+                Client List
+            </a>
+            <button type="submit" class="btn btn-danger btn-sm" style="width:100px; margin-left:10px;">Delete</button>
         </div>
     }
 </div>
