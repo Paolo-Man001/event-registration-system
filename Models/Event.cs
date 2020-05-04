@@ -27,7 +27,7 @@ namespace EventRegistrationSystem.Models
 
         [Required(ErrorMessage = "Event Date is required.")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyy}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyy}", ApplyFormatInEditMode = false)]
         public DateTime Date { get; set; }
 
         [Required(ErrorMessage = "Ticket Price is required.")]
