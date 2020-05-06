@@ -13,9 +13,18 @@ namespace EventRegistrationSystem.Controllers
         private EventRegistrationContext db = new EventRegistrationContext();
 
         // GET: Client List
-        public ActionResult Index()
+        public ActionResult Index(string clientSearchTerm)
         {
-            return View(db.Clients.OrderBy(c => c.FullName).ToList());
+            var clients = db.Clients.OrderBy(c => c.FullName);
+
+            if (!string.IsNullOrEmpty(clientSearchTerm))
+            {
+                clients = clients
+                    .Where(c => c.FullName.Contains(clientSearchTerm))
+                    .OrderBy(c => c.FullName);
+            }
+
+            return View(clients.ToList());
         }
 
 

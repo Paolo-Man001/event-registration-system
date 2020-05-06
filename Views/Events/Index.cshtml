@@ -42,7 +42,7 @@
         <th>
             Event Owner
         </th>
-        <th>
+        <th style="background-color:#fcf8e3 !important;">
             @Html.DisplayNameFor(model => model.EventName)
         </th>
         <th>
@@ -63,10 +63,10 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td class="bg-warning">
+            <td>
                 @Html.DisplayFor(modelItem => item.Client.FullName)
             </td>
-            <td>
+            <td class="bg-warning">
                 @Html.DisplayFor(modelItem => item.EventName)
             </td>
             <td>
