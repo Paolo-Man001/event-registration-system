@@ -131,6 +131,7 @@
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAL\DataInitializer.cs" />
     <Compile Include="DAL\EventRegistrationContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
