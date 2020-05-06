@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -12,9 +13,17 @@ namespace EventRegistrationSystem.Controllers
         private EventRegistrationContext db = new EventRegistrationContext();
 
         // GET: Events
-        public ActionResult Index()
+        public ActionResult Index(string eventSearchTerm)
         {
             var events = db.Events.Include(e => e.Client).OrderBy(e => e.EventName);
+
+            if (!string.IsNullOrEmpty(eventSearchTerm))
+            {
+                events = events
+                    .Where(e => e.EventName.Contains(eventSearchTerm))
+                    .Include(e => e.Client)
+                    .OrderBy(e => e.EventName);
+            }
             return View(events.ToList());
         }
 
