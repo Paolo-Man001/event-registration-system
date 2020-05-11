@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace EventRegistrationSystem.Models
 {
@@ -10,7 +6,7 @@ namespace EventRegistrationSystem.Models
     {
         public int ID { get; set; }
         public int EventID { get; set; }           // Foreign Key
-        public virtual Event Event { get; set; }    // Model for FK
+       
 
         [Required(ErrorMessage = "Name is required.")]
         [Display(Name = "Customer Name")]
@@ -33,6 +29,9 @@ namespace EventRegistrationSystem.Models
 
         [Display(Name = "Total Price"), DataType(DataType.Currency)]
         public decimal TotalPurchase { get; set; }
+
+
+        public virtual Event Event { get; set; }    // Model for FK
 
     }
 }
