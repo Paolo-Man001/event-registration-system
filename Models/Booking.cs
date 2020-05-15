@@ -31,7 +31,7 @@ namespace EventRegistrationSystem.Models
         public decimal TotalPurchase { get; set; }
 
 
-        public virtual Event Event { get; set; }    // Model for FK
+        public virtual Event Event { get; set; }    // Reference-Model for FK
 
     }
 }
