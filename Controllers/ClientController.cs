@@ -13,10 +13,9 @@ namespace EventRegistrationSystem.Controllers
         private EventRegistrationContext db = new EventRegistrationContext();
 
         // GET: Client List
-        public ActionResult Index(string clientSearchTerm)              //  'searchTerm' is String-value input from search-box.
+        public ActionResult Index(string clientSearchTerm)              // 'searchTerm' is String-value input from search-box, pass as arg
         {
             var clients = db.Clients.OrderBy(c => c.FullName);          // Assign all Clients into the variable in alphabetical order by 'Full Name'
-
             if (!string.IsNullOrEmpty(clientSearchTerm))                // Checks the textbox if it's not empty
             {
                 clients = clients
@@ -29,7 +28,7 @@ namespace EventRegistrationSystem.Controllers
 
 
         // GET: Client Details
-        public ActionResult Details(int? id)            // optional(nullable) argument indicated by '?'
+        public ActionResult Details(int? id)            // Get the details of Client by passing ClientID arg
         {
             if (id == null)
             {
@@ -56,7 +55,7 @@ namespace EventRegistrationSystem.Controllers
         }
 
         // POST: Client/Create (new Client)
-        [HttpPost]                              // This tells the server this method responds to a 'POST' request
+        [HttpPost]                              // This tells the server this method responds to a 'POST' request from CreateView
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "FullName,Email,Address,Phone")] Client client)
         {
@@ -102,10 +101,10 @@ namespace EventRegistrationSystem.Controllers
         }
 
 
-        // GET: Client/Delete
-        public ActionResult Delete(int? id)         // gets the ClientID
+        // GET: Client/Delete/{id}
+        public ActionResult Delete(int? id)         // gets the ClientID that is chosen to be deleted, and displays the client-detail
         {
-            if (id == null)                         // Check ClientID, if null then return StatusCode 400
+            if (id == null)                         // Check ClientID, if null, then return StatusCode 400
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -116,17 +115,20 @@ namespace EventRegistrationSystem.Controllers
             }
             return View(client);                    // return the client found by 'id'
         }
-        // POST: Client/Delete/5
-        [HttpPost, ActionName("Delete")]            // Specify this Action as SQLquery "DELETE"
+        // POST: Client/Delete/{id}
+        [HttpPost, ActionName("Delete")]            // Specify to Call this method, for the the submit(POST) in "Delete" Action.
         [ValidateAntiForgeryToken]                  
-        public ActionResult DeleteConfirmed(int id) 
+        public ActionResult DeleteConfirmed(int id) // Delete button is clicked, passing 'ClientID' as argument.
         {
-            Client client = db.Clients.Find(id);
-            db.Clients.Remove(client);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            Client client = db.Clients.Find(id);    // Find the matching Id in Client-table.
+            db.Clients.Remove(client);              // When ClientID is found , Remove from Client-table
+            db.SaveChanges();                       // Save the changes in the Client-table
+            return RedirectToAction("Index");       // Redirect the Page back to 'Index' View of Client
         }
 
+
+        // This method disposes any unused excess-referencess to resources in the stack/heap that the garbage-collection missed.
+        // This helps to avoid accidental memory leak and unnecessary background process that my cause the app to slow-down or crash.
         protected override void Dispose(bool disposing)
         {
             if (disposing)

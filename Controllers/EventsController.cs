@@ -50,8 +50,6 @@ namespace EventRegistrationSystem.Controllers
         }
 
         // POST: Events/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,ClientID,EventName,Description,Location,Date,TicketPrice")] Event @event)
@@ -83,9 +81,7 @@ namespace EventRegistrationSystem.Controllers
             return View(@event);
         }
 
-        // POST: Events/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Events/Edit/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,ClientID,EventName,Description,Location,Date,TicketPrice")] Event @event)
@@ -102,7 +98,7 @@ namespace EventRegistrationSystem.Controllers
             return View(@event);
         }
 
-        // GET: Events/Delete/5
+        // GET: Events/Delete/{id}
         public ActionResult Delete(int? id)
         {
             if (id == null)

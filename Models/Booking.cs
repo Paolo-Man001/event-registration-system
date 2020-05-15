@@ -7,7 +7,6 @@ namespace EventRegistrationSystem.Models
         public int ID { get; set; }
         public int EventID { get; set; }           // Foreign Key
        
-
         [Required(ErrorMessage = "Name is required.")]
         [Display(Name = "Customer Name")]
         [StringLength(100, MinimumLength = 2, ErrorMessage = "Name must be at 2 to 100 characters.")]
@@ -32,6 +31,5 @@ namespace EventRegistrationSystem.Models
 
 
         public virtual Event Event { get; set; }    // Reference-Model for FK
-
     }
 }
