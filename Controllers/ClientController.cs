@@ -57,7 +57,7 @@ namespace EventRegistrationSystem.Controllers
         // POST: Client/Create (new Client)
         [HttpPost]                              // This tells the server this method responds to a 'POST' request from CreateView
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FullName,Email,Address,Phone")] Client client)
+        public ActionResult Create([Bind(Include = "FullName,Email,Address,Phone")] Client client)  // Bind each Client-model's user-generated fields
         {
             if (ModelState.IsValid)             // Check if Model is valid. Validation is done in the server referencing Data Annotation
             {
@@ -72,7 +72,7 @@ namespace EventRegistrationSystem.Controllers
         // GET: Client/Edit
         public ActionResult Edit(int? id)
         {
-            if (id == null)                         // Http-Header Status Code 400 is sent to the Client if Id does not exist
+            if (id == null)                         // Http-Header Status Code 400 is sent to the Client if 'Id' does not exist
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest); // Status-Code 400
             }
@@ -95,7 +95,7 @@ namespace EventRegistrationSystem.Controllers
                 db.SaveChanges();
                 //return RedirectToAction("Index");
 
-                ViewBag.isSubmitted = true;         // If ViewBag(boolean) used to show/hide pop-up notification.
+                ViewBag.isSubmitted = true;         // ViewBag(boolean) is conditionally used to show/hide pop-up notification.
             }
             return View(client);
         }
